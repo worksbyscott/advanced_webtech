@@ -1,0 +1,33 @@
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">You're editing {{ data.name }}'s information.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="comment">Name:</label>
+          <input type="text" class="form-control" id="usr" value="{{data.name}}">
+        </div>
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+        <div class="form-group">
+          <label for="comment">Header:</label>
+          <textarea class="form-control" rows="5" id="comment" value="{{ data.header }}"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="comment">Description:</label>
+          <textarea class="form-control" rows="5" id="comment" value="{{ data.description }}"></textarea>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

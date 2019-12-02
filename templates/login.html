@@ -1,0 +1,24 @@
+<div class="login col-md-4">
+    <div class="">
+        
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="alerts">
+    {% for message in messages %}
+            <div class="alert_message">
+                <p>{{ message }}</p>
+            </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+       
+        <h3>Login to Admin Panel</h3>
+        <label>Password</label>
+        <input type="text" 
+               class="form-control loginval" 
+               id="password" 
+               placeholder="Password" >
+         <button type="button" id="login_btn" class="btn"><span class="glyphicon glyphicon-view" data-artist="scott templeton"></span>Login to Admin</button>
+    </div>
+</div> 

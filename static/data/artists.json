@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Scott Templeton",
+        "img": "djboring.jpg",
+        "header": "Main Header Here",
+        "description": "The creator of Cella",
+        "social": {
+            "facebook": "url",
+            "instagram": ""
+        }
+    },
+    {
+        "name": "Dj Boring",
+        "img": "hero.jpg",
+        "description": "The creator of Cella",
+        "social": {
+            "facebook": "url",
+            "instagram": ""
+        }
+    }
+    
+]

@@ -1,0 +1,175 @@
+<div class="wrapper">
+    
+    <div class="show_info col-md-6">
+        
+        
+        
+        <h2>Admin Settings</h2>
+        <form>
+            <div class="form-group">
+                <label>Featured Track ID (Drezzer  ID)</label>
+                <input type="text" 
+                       class="form-control" 
+                       id="drezzerId" 
+                       placeholder="Dreezer ID" 
+                       value="{{ data.featuredId }}">
+            </div>
+            <div class="form-group">
+                <label>Facebook URL</label>
+                <input type="text" 
+                       class="form-control" 
+                       id="facebookURL" 
+                       placeholder="Facebook URL" 
+                       value="{{ data.social.facebook }}">
+            </div>
+            <div class="form-group">
+                <label>Instagram URL</label>
+                <input type="text" 
+                       class="form-control" 
+                       id="instagramURL" 
+                       placeholder="Instagram Url" 
+                       value="{{ data.social.instagram }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Update Settings</button>
+            <button class="btn btn-primary" id="logout">Logout</button>
+        </form>
+    </div>
+
+    <div class="artists_admin col-md-6">
+        <h2>Artist Directory</h2>
+        <div class="">
+            <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for names..">
+        </div>
+
+        <button type="button" id="showAdd" data-target="#addModal" class="btn artist_add"><span class="glyphicon glyphicon-plus"></span>Add New Artist</button>
+          <table class="table table-hover" id="myTable">
+                <thead>
+                  <tr>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for a in artists %}
+                        <tr>
+                            <td class="text-center"><strong>{{ a.name }}</strong></td>
+                            <td class="text-center">
+                                <button type="button" class="btn"><span class="glyphicon glyphicon-view" data-artist="{{ a.name }}" id="artist_view"></span> View</button>
+                                <button type="button" class="btn editbutton" data-toggle="modal" data-artist="{{ a.name }}" data-target="#exampleModal"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                                <button type="button" class="btn delbutton" data-artist="{{ a.name }}"><span class="glyphicon glyphicon-remove"></span> Delete</button>
+                            </td>
+                          </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="addModalLabel">Creating a new artist...</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        
+        <form id="newArtists">
+            <div class="modal-body">
+                <div class="form-group">
+                  <label for="comment">Name:</label>
+                  <input name="name" type="text" id="addName" class="form-control">
+                </div>
+                
+                <div class="custom-file">
+                    <input  name="image" type="file" id="addImage" class="custom-file-input">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comment">Header:</label>
+                    <textarea name="header" id="addHeader" class="form-control" rows="5"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="comment">Description:</label>
+                    <textarea name="description" id="addDesc" class="form-control" rows="5"></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="addBtn" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </form>
+        
+  </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="editModalLabel">You're editing {{data.name}}'s information.</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        
+        <form id="editForm">
+            <div class="modal-body">
+                
+                <div class="form-group">
+                    <label for="comment">Name:</label>
+                    <input name="name" type="text" class="form-control" id="editModalName" value="{{ data.name }}" readonly>
+                </div>
+                
+                <div class="custom-file">
+                    <input  name="image" type="file" class="custom-file-input" id="customFileEdit">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+                
+                <div class="form-group">
+                  <label for="comment">Header:</label>
+                  <textarea name="header" class="form-control" rows="5" id="editModalHeader" value="{{ data.header }}"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="comment">Description:</label>
+                  <textarea name="description" class="form-control" rows="5" id="editModalDesc" value="{{ data.description }}"></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="editChanges" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </form>
+        
+  </div>
+</div>
+    
+
+<script>
+function filterTable() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("searchInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+</script>

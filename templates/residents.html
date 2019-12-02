@@ -1,0 +1,14 @@
+ <div class="wrapper">
+    <div class="artists_header wow fadeInDown"  data-wow-duration="1s" data-wow-delay=".3s">
+        <h1>ARTISTS & RESIDENTS</h1>
+    </div>
+
+    <ul class="artist_list">
+        {% for a in data %}
+            <li class="artist_card wow fadeIn"  data-wow-duration="1s" data-wow-delay=".4s" data-id="{{ a.name }}">
+                <img src='{{ url_for("static", filename="/static/uploads/" + a.img + ".jpg")}}'>
+                <p>{{ a.name }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
