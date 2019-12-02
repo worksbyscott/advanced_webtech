@@ -10,8 +10,8 @@
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         
-        <link href="{{ url_for("static", filename="/static/css/main.css") }}" rel="stylesheet">
-        <link href="{{ url_for("static", filename="/static/css/animate.css") }}" rel="stylesheet">
+        <link href="{{ url_for("static", filename="css/main.css") }}" rel="stylesheet">
+        <link href="{{ url_for("static", filename="css/animate.css") }}" rel="stylesheet">
         
         <!-- Javascript-->
         
@@ -25,7 +25,7 @@
         <nav>
             <div class="nav_header wow fadeInDown" data-wow-duration="1s">
                 <div class="wrapper">
-                    <img src="{{ url_for("static", filename="/static/images/Logo.svg")}}" alt="CELLA.FM">
+                    <img src="{{ url_for("static", filename="images/Logo.svg")}}" alt="CELLA.FM">
                 </div>
             </div>
             
@@ -35,7 +35,7 @@
                     <!-- Navigation Player -->
                     
                     <div class="nav_player wow fadeIn" id="play">
-                        <img id="nav_player_img" src="{{ url_for("static", filename="/static/images/hero.jpg")}}">
+                        <img id="nav_player_img" src="{{ url_for("static", filename="images/hero.jpg")}}">
                         <div class="player_info wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s">
                             <p id="show_name">Currently Playing: Cella-FM Recordings</p>
                         </div>
@@ -70,9 +70,9 @@
             <h5 id="admin_login">ADMIN PANEL</h5>
         </footer>
         
-        <script src="{{ url_for("static", filename="/static/js/WOW.js")}}"></script>
-        <script src="{{ url_for("static", filename="/static/js/jquery-3.1.0.min.js")}}"></script>
-        <script src="{{ url_for("static", filename="/static/js/main.js")}}"></script>
+        <script src="{{ url_for("static", filename="js/WOW.js")}}"></script>
+        <script src="{{ url_for("static", filename="js/jquery-3.1.0.min.js")}}"></script>
+        <script src="{{ url_for("static", filename="js/main.js")}}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script>
             new WOW().init();
